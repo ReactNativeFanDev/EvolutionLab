@@ -43,8 +43,8 @@ export const GrowthMapScreen = () => {
   }
 
   return (
-    <View style={StyleSheet.compose(styles.container, { paddingTop: top })}>
-      <View style={styles.header}>
+    <View style={styles.container}>
+      <View style={StyleSheet.compose(styles.header, { paddingTop: top })}>
         <Text style={styles.headerTitle}>Карта развития</Text>
         <Text style={styles.headerSubtitle}>
           Пройдите все модули последовательно
