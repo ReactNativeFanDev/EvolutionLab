@@ -1,0 +1,1 @@
+export { GrowthMapScreen } from './growthMapScreen';
