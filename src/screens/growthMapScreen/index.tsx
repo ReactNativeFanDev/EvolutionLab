@@ -1,32 +1,18 @@
 import React from 'react';
-import { View, Text, FlatList, Alert, ActivityIndicator } from 'react-native';
-import { useGetLessonsQuery } from '@store/api/lessonsApi';
+import {
+  View,
+  Text,
+  FlatList,
+  ActivityIndicator,
+  StyleSheet,
+} from 'react-native';
 import { Lesson } from '@store/api/lessonsApi/types';
 import { LessonCard } from '@components/cards';
 import { styles } from './styles';
+import { useHook } from './hooks';
 
 export const GrowthMapScreen = () => {
-  const { data: lessons, isLoading, isError } = useGetLessonsQuery();
-
-  const handleLessonPress = (lesson: Lesson) => {
-    switch (lesson.status) {
-      case 'active':
-        console.log('Start lesson');
-        break;
-
-      case 'locked':
-        Alert.alert(
-          'Урок заблокирован',
-          'Пожалуйста, завершите предыдущие уроки, чтобы разблокировать этот.',
-          [{ text: 'Понятно', style: 'cancel' }],
-        );
-        break;
-
-      case 'done':
-        console.log('Review lesson');
-        break;
-    }
-  };
+  const { lessons, handleLessonPress, top, isLoading, isError } = useHook();
 
   const renderLesson = ({ item, index }: { item: Lesson; index: number }) => (
     <LessonCard
@@ -57,7 +43,7 @@ export const GrowthMapScreen = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={StyleSheet.compose(styles.container, { paddingTop: top })}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Карта развития</Text>
         <Text style={styles.headerSubtitle}>

@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
   },
   header: {
     paddingHorizontal: 20,
-    paddingTop: 60,
+
     paddingBottom: 20,
     backgroundColor: colors.white,
     borderBottomWidth: 1,
